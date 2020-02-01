@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+echo -e "\e[1mCompiling...\e[0m"
+gcc -o crawler main.c -lncursesw
+gccstatus=$?
+if [ "$gccstatus" == "0" ]; then
+	echo -e "\e[1;32mCompiled successfully.\e[0m"
+else
+	echo -e "\e[1;31mFailed to compile.\e[0m"
+fi
+if [ "$gccstatus" == "0" -a "$1" == "-r" ]; then
+       echo -e "\e[1mExecuting...\e[0m"
+       ./crawler
+fi
+exit $?
